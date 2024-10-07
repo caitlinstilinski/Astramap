@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Музей-заповедник "Тарханы"</title>
+	<style>
+.mapboxgl-popup {
+max-width: 400px;
+font: 12px/20px Great Vibes, serif;
+}
+</style>
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<meta charset="utf-8">
+<meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+<link href="https://api.mapbox.com/mapbox-gl-js/v3.7.0/mapbox-gl.css" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Scriptina+Pro&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Scriptina+Pro&display=swap">
+<script src="https://api.mapbox.com/mapbox-gl-js/v3.7.0/mapbox-gl.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+ <script src="https://cdn.rawgit.com/mapbox/mapbox-gl-js/v0.53.1/plugins/mapbox-gl-3d-model/mapbox-gl-3d-model.js"></script>
+<style>
+
+   #header{
+      position: absolute;
+      background: #fbfcfc ;
+      width: 100%;
+      height: 60px;
+      left: 0px;
+      top: 0px;
+	box-shadow: 2px 2px 15px #145a32;
+	   z-index: 1000;
+	    padding-left: 820px;
+		padding-bottom: 2px;
+		box-sizing: border-box;
+       font-family: Scriptina Pro, serif;
+	   font-style: italic;
+		font-weight: normal;
+		color: #145a32 ;
+		
+	
+    }
+    #menu{
+   
+    width: 250px;
+      left: 0px;
+      top: 60px;
+      bottom: 0px;
+
+	 position:absolute;
+	
+	 background:white;
+     z-index: 100;
+	 box-shadow: 2px 5px 5px #778899;
+	 
+	 box-sizing: border-box;
+	padding-left: 10px;
+    }
+    #map{
+      position: absolute;
+   
+      left: 250px;
+      right:0px;
+      top: 60px;
+      bottom: 0px;
+	   z-index: 0;
+	    padding-left: 50px;
+		padding-top: 15px;
+		box-sizing: border-box;
+    }
+	
+	#search{
+	width: 300px; 
+	 height:30px; 
+	 position:absolute;
+	 top:20px;
+	 right:30px;
+     z-index: 200;
+	 padding-left: 20px;
+	
+	 
+ }
+
+	#icon {
+	position:absolute;
+	 bottom:5px; 
+	 left:0px;
+	 z-index: 2000;
+	 padding-left:20px;
+	 padding-bottom: 5px;
+	 }
+	 
+
+	
+	  
+	 	 form.search_form input[type=text] {
+  
+	      width: 250px;
+	 }
+	 form.search_form button {
+	 
+	float: right;
+	padding-top:3px;
+	width:45px;
+	cursor: pointer;
+	color: #A9A9A9;
+	background-color: white;
+	border: 1px solid gray;
+	
+	z-index: 600;
+	
+	
+	 }
+	 
+</style>
+</head>
+<body>
+<script src="https://unpkg.com/three@0.126.0/build/three.min.js"></script>
+<script src="https://unpkg.com/three@0.126.0/examples/js/loaders/GLTFLoader.js"></script>
+    <div id="header">
+		<h2>Государственный Лермонтовский музей-заповедник «Тарханы»</h2>
+		
+		</div>
+	</div>
+    <div id="menu"> 
+	<p>
+	 <h2>Меню</h3>
+	 </p>
+	<p>
+	
+	<input id= "mytext" type="text">
+	<input  id= "mybutton"type="button" value="Найти">
+	
+	</p>
+	
+	</div>
+ 
+	
+	<div id="icon"> <img src="icon.jpg"  width="50" height="50" alt = картинка></div>
+	
+
+	   <div id="map"></div>
+
+
+<script>
+	mapboxgl.accessToken = 'pk.eyJ1IjoiZWthdGVyaW5hLXpodXJhdmxldmEiLCJhIjoiY2w5YTM4azI4MGpmNDN2bzZxNmF4aXB6NiJ9.eKCP_ow0zyYyT3-uKgeLnw';
+    const map = new mapboxgl.Map({
+        container: 'map',
+        zoom: 16,
+        center: [43.6733242,52.9929158],
+        pitch: 50,
+        bearing: 30,
+        // Choose from Mapbox's core styles, or make your own style with Mapbox Studio
+        style:  'mapbox://styles/mapbox/streets-v12'
+		
+    });
+  map.addControl(new mapboxgl.NavigationControl());
+    map.on('style.load', () => {
+        map.addSource('mapbox-dem', {
+            'type': 'raster-dem',
+            'url': 'mapbox://mapbox.mapbox-terrain-dem-v1',
+            'tileSize': 512,
+            'maxzoom': 18
+        });
+        // add the DEM source as a terrain layer with exaggerated height
+        map.setTerrain({ 'source': 'mapbox-dem', 'exaggeration': 4.5 });
+		
+		
+		
+		const geolocate = new mapboxgl.GeolocateControl({
+    positionOptions: {
+        enableHighAccuracy: true
+    },
+    trackUserLocation: true
+});
+// Add the control to the map.
+map.addControl(geolocate);
+// Set an event listener that fires
+// when a geolocate event occurs.
+geolocate.on('geolocate', () => {
+    console.log('A geolocate event has occurred.');
+});
+map.addControl(new mapboxgl.FullscreenControl());
+		
+    
+	
+	
+
+	map.on('click', 'points', (e) => {
+new mapboxgl.Popup()
+.setLngLat(e.lngLat)
+.setHTML(e.features[0].properties.Infor)
+.addTo(map);
+});
+map.on('mouseenter', 'points', () => {
+map.getCanvas().style.cursor = 'pointer';
+});
+map.on('mouseleave', 'points', () => {
+map.getCanvas().style.cursor = '';
+});
+
+
+
+	});
+	
+	map.on('style.load', () => {
+        // Insert the layer beneath any symbol layer.
+        const layers = map.getStyle().layers;
+        const labelLayerId = layers.find(
+            (layer) => layer.type === 'symbol' && layer.layout['text-field']
+        ).id;
+
+        // The 'building' layer in the Mapbox Streets
+        // vector tileset contains building height data
+        // from OpenStreetMap.
+        map.addLayer(
+            {
+                'id': 'add-3d-buildings',
+                'source': 'composite',
+                'source-layer': 'building',
+                'filter': ['==', 'extrude', 'true'],
+                'type': 'fill-extrusion',
+                'minzoom': 15,
+                'paint': {
+                    'fill-extrusion-color': '#85929e',
+
+                    // Use an 'interpolate' expression to
+                    // add a smooth transition effect to
+                    // the buildings as the user zooms in.
+                    'fill-extrusion-height': [
+                        'interpolate',
+                        ['linear'],
+                        ['zoom'],
+                        15,
+                        0,
+                        15.05,
+                        ['get', 'height']
+                    ],
+                    'fill-extrusion-base': [
+                        'interpolate',
+                        ['linear'],
+                        ['zoom'],
+                        15,
+                        0,
+                        15.05,
+                        ['get', 'min_height']
+                    ],
+                    'fill-extrusion-opacity': 0.7
+                }
+            },
+            labelLayerId
+        );
+    });
+</script>
+<script>
+
+	mybutton.onclick = function() {
+	
+	if (mytext.value!='') {
+$.ajax({
+	url: 'https://geocode-maps.yandex.ru/1.x',         /* Куда пойдет запрос */
+	method: 'get',             /* Метод передачи (post или get) */
+	dataType: 'json',    /* Тип данных в ответе (xml, json, script, html). */
+	data: {geocode:mytext.value, apikey:'9c80c2d6-056a-466a-a272-b2d31729cb61', format: 'json'},
+	success: function(data){   /* функция которая будет выполнена после успешного запроса.  */
+		console.log(data);
+		
+		if (data.response.GeoObjectCollection.featureMember.length>0) {
+let coord = data.response.GeoObjectCollection.featureMember[0].GeoObject.Point.pos.split (' ');
+let x = Number (coord [0]);// долгота
+let y = Number (coord [1]); // широта
+
+
+let x1 = Number(data.response.GeoObjectCollection.featureMember[0].GeoObject.boundedBy.Envelope.lowerCorner.split(' ')[0]);
+let y1 = Number(data.response.GeoObjectCollection.featureMember[0].GeoObject.boundedBy.Envelope.lowerCorner.split(' ')[1]);
+let x2 = Number(data.response.GeoObjectCollection.featureMember[0].GeoObject.boundedBy.Envelope.upperCorner.split(' ')[0]);
+let y2 = Number(data.response.GeoObjectCollection.featureMember[0].GeoObject.boundedBy.Envelope.upperCorner.split(' ')[1]);
+
+
+
+	map.fitBounds([[x1,y1],[x2,y2]]);
+
+
+		
+		 
+		 }
+		 else {
+		 alert('Объект не найден!');}
+	}
+});
+} else {
+alert('Введите название города или страны');
+}
+}
+
+</script>
+
+</body>
+</html>
