@@ -299,35 +299,6 @@ map.on('style.load', () => {
             }
         });
     });
-	map.on('style.load', () => {
-        map.addLayer({
-            id: 'custom-threebox-model-1',
-            type: 'custom',
-            renderingMode: '3d',
-            onAdd: function () {
-                // Creative Commons License attribution:  Metlife Building model by https://sketchfab.com/NanoRay
-                // https://sketchfab.com/3d-models/metlife-building-32d3a4a1810a4d64abb9547bb661f7f3
-                const scale = 2.3;
-                const options = {
-                    obj: 'Clu.glb',
-                    type: 'glb',
-                    scale: { x: scale, y: scale, z: 1.5 },
-                    units: 'meters',
-                    rotation: { x: 90, y: 10, z: 0 }
-                };
-
-                tb.loadObj(options, (model) => {
-                    model.setCoords([43.6721649629392,52.99241456756731]);
-                    model.setRotation({ x: 0, y: 0, z: 30 });
-                    tb.add(model);
-                });
-            },
-
-            render: function () {
-                tb.update();
-            }
-        });
-    });
 
 	map.on('style.load', () => {
         // Insert the layer beneath any symbol layer.
