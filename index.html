@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+
 <html>
 <head>
 <title>Музей-заповедник "Тарханы"</title>
@@ -12,166 +12,115 @@ font: 12px/20px Great Vibes, serif;
 <meta charset="utf-8">
 <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
 <link href="https://api.mapbox.com/mapbox-gl-js/v3.7.0/mapbox-gl.css" rel="stylesheet">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Scriptina+Pro&display=swap">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Scriptina+Pro&display=swap">
 <script src="https://api.mapbox.com/mapbox-gl-js/v3.7.0/mapbox-gl.js"></script>
+
 <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
- <script src="https://cdn.rawgit.com/mapbox/mapbox-gl-js/v0.53.1/plugins/mapbox-gl-3d-model/mapbox-gl-3d-model.js"></script>
-<style>
+ <link rel="icon" type="image/x-icon" href="https://upload.wikimedia.org/wikipedia/commons/e/e5/Folding_Map_Flat_Icon_Vector_v2.svg">
+ 
 
-   #header{
-      position: absolute;
-      background: #fbfcfc ;
-      width: 100%;
-      height: 60px;
-      left: 0px;
-      top: 0px;
-	box-shadow: 2px 2px 15px #145a32;
-	   z-index: 1000;
-	    padding-left: 820px;
-		padding-bottom: 2px;
-		box-sizing: border-box;
-       font-family: Scriptina Pro, serif;
-	   font-style: italic;
-		font-weight: normal;
-		color: #145a32 ;
-		
-	
-    }
-    #menu{
-   
-    width: 250px;
-      left: 0px;
-      top: 60px;
-      bottom: 0px;
+ <style>
+body { margin: 0; padding: 0; }
+#map { position: absolute; top: 0; bottom: 0; width: 100%; }
+.menu {
+	position: absolute;
+	width: 31%;
+	margin: 10px;
+	padding: 10px;
+	background-color: white; 
+	z-index: 100;
+	text-align: right;
+	border-radius: 4px;
+	box-shadow: 0 0 10px 2px rgba(1,0,0,.2);
+	font-family: Helvetica, sans-serif;
+	color: #145a32;
+	position: relative; /* Add relative positioning */
+}
+	 
+	 #button_1 {
+}
 
-	 position:absolute;
-	
-	 background:white;
-     z-index: 100;
-	 box-shadow: 2px 5px 5px #778899;
-	 
-	 box-sizing: border-box;
-	padding-left: 10px;
-    }
-    #map{
-      position: absolute;
-   
-      left: 250px;
-      right:0px;
-      top: 60px;
-      bottom: 0px;
-	   z-index: 0;
-	    padding-left: 50px;
-		padding-top: 15px;
-		box-sizing: border-box;
-    }
-	
-	#search{
-	width: 300px; 
-	 height:30px; 
-	 position:absolute;
-	 top:20px;
-	 right:30px;
-     z-index: 200;
-	 padding-left: 20px;
-	
-	 
- }
+.mapboxgl-popup {
+  max-width: 1200px; /* Maximum width for larger screens */
+  width: 100%; /* Full width of the parent container */
+}
 
-	#icon {
-	position:absolute;
-	 bottom:5px; 
-	 left:0px;
-	 z-index: 2000;
-	 padding-left:20px;
-	 padding-bottom: 5px;
-	 }
-	 
+.mapboxgl-popup-content {
+  width: 100%; /* Ensure the content takes full width */
+  max-width: 600px; /* Limit maximum width */
+  min-width: 400px; /* Set a minimum width so it doesn’t get too narrow */
+  box-sizing: border-box; /* Include padding and borders in width */
+  padding: 15px; /* Add padding for content readability */
+  background-color: white; /* Set background */
+  border: 1px solid #ccc; /* Optional: add border */
+  border-radius: 5px; /* Optional: rounded corners */
+  overflow-y: auto;
+font-family: Palatino, serif; /  /* Allow scrolling if the content overflows */
+}
 
-	
-	  
-	 	 form.search_form input[type=text] {
-  
-	      width: 250px;
-	 }
-	 form.search_form button {
-	 
-	float: right;
-	padding-top:3px;
-	width:45px;
-	cursor: pointer;
-	color: #A9A9A9;
-	background-color: white;
-	border: 1px solid gray;
-	
-	z-index: 600;
-	
-	
-	 }
-	 
+.mapboxgl-popup-close-button {
+  top: 10px; /* Adjust the close button position */
+  right: 10px;
+}
+.mapboxgl-popup-content p {
+  text-align: justify; /* Center align the text and inline elements inside <p> */
+}
+
+.mapboxgl-popup-content img {
+  display: block; /* Make the image a block element */
+  margin: 0 auto; /* Center the image horizontally */
+  max-width: 100%; /* Ensure the image stays responsive */
+  height: auto; /* Maintain image aspect ratio */
+}
+
+
 </style>
 </head>
 <body>
-<script src="https://unpkg.com/three@0.126.0/build/three.min.js"></script>
-<script src="https://unpkg.com/three@0.126.0/examples/js/loaders/GLTFLoader.js"></script>
-    <div id="header">
-		<h2>Государственный Лермонтовский музей-заповедник «Тарханы»</h2>
-		
-		</div>
-	</div>
-    <div id="menu"> 
-	<p>
-	 <h2>Меню</h3>
-	 </p>
-	<p>
-	
-	<input id= "mytext" type="text">
-	<input  id= "mybutton"type="button" value="Найти">
-	
-	</p>
-	
-	</div>
- 
-	
-	<div id="icon"> <img src="icon.jpg"  width="50" height="50" alt = картинка></div>
-	
+<script src="https://cdn.jsdelivr.net/gh/jscastro76/threebox@v.2.2.2/dist/threebox.min.js" type="text/javascript"></script>
+<link href="https://cdn.jsdelivr.net/gh/jscastro76/threebox@v.2.2.2/dist/threebox.css" rel="stylesheet">
 
-	   <div id="map"></div>
 
+<div class="menu">
+	<p><h2 style="text-align: center;">Музей-заповедник «Тарханы»</h2> — это уголок в глубине России, имеющий притягательную силу «культурного гнезда». Здесь, в имении своей бабушки Е.А. Арсеньевой, провел половину жизни великий русский поэт Михаил Юрьевич Лермонтов. Тарханы навсегда остались для него страной, где душа «чудесного искала». </p>
+
+</div>
+
+
+
+<script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.min.js"></script>
+<link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.css" type="text/css">
+<div id="map"></div>
 
 <script>
 	mapboxgl.accessToken = 'pk.eyJ1IjoiZWthdGVyaW5hLXpodXJhdmxldmEiLCJhIjoiY2w5YTM4azI4MGpmNDN2bzZxNmF4aXB6NiJ9.eKCP_ow0zyYyT3-uKgeLnw';
-    const map = new mapboxgl.Map({
-        container: 'map',
-        zoom: 16.5,
-        center: [43.6733242,52.9929158],
-        pitch: 70,
-        bearing: 30,
-        // Choose from Mapbox's core styles, or make your own style with Mapbox Studio
-        style:  'mapbox://styles/mapbox/streets-v12'
-		
-    });
-  map.addControl(new mapboxgl.NavigationControl());
-    map.on('style.load', () => {
-        map.addSource('mapbox-dem', {
-            'type': 'raster-dem',
-            'url': 'mapbox://mapbox.mapbox-terrain-dem-v1',
-            'tileSize': 512,
-            'maxzoom': 18
-        });
-        // add the DEM source as a terrain layer with exaggerated height
-        map.setTerrain({ 'source': 'mapbox-dem', 'exaggeration': 4.5 });
-		
-		
-		
-		const geolocate = new mapboxgl.GeolocateControl({
+const map = new mapboxgl.Map({
+container: 'map',
+style: 'mapbox://styles/ekaterina-zhuravleva/cm1zftgak01dj01qv02l9chhn',
+center: [43.6733242,52.9929158],
+zoom: 16.5,
+pitch: 70,
+bearing: 25,
+antialias: true
+});
+
+map.addControl(
+new MapboxGeocoder({
+accessToken: mapboxgl.accessToken,
+mapboxgl: mapboxgl
+})
+);
+
+map.addControl(new mapboxgl.NavigationControl());
+
+
+const geolocate = new mapboxgl.GeolocateControl({
     positionOptions: {
         enableHighAccuracy: true
     },
     trackUserLocation: true
 });
+
 // Add the control to the map.
 map.addControl(geolocate);
 // Set an event listener that fires
@@ -180,29 +129,90 @@ geolocate.on('geolocate', () => {
     console.log('A geolocate event has occurred.');
 });
 map.addControl(new mapboxgl.FullscreenControl());
-		
-    
-	
-	
 
-	map.on('click', 'points', (e) => {
-new mapboxgl.Popup()
-.setLngLat(e.lngLat)
-.setHTML(e.features[0].properties.Infor)
-.addTo(map);
+map.on('load', () => {
+
+map.loadImage(
+'mus.png',
+(error, image) => {
+if (error) throw error;
+map.addImage('custom-marker', image);
+
+map.addSource('points', {
+'type': 'geojson',
+'data': {
+'type': 'FeatureCollection',
+'features': [
+{ "type": "Feature", "properties": { "name": "Барский дом", "image": "Bardom", "icon": "mus", "dscrptn": "Бывший помещичий дом в Тарханах занимает центральное место на усадьбе и является главным экспозиционным зданием, олицетворяющим атмосферу эпохи. Лермонтов дважды приезжал сюда: в 1828 году, перед поступлением в Московский университетский благородный пансион, и зимой 1836 года, находясь в офицерском отпуске. Именно здесь он создал ряд значимых произведений, включая стихотворение «Умирающий гладиатор», драму «Два брата», поэму «Сашка» и начал писать «Тамбовскую казначейшу».Сегодня в доме открыта экспозиция «Лермонтов и Тарханы в контексте эпохи», которая была основана в 2002 году и тщательно раскрывает судьбу поэта, неразрывно связанную с его «родными местами». " }, "geometry": { "type": "Point", "coordinates": [ 43.67232369542949, 52.992283318158371 ] } },
+{ "type": "Feature", "properties": { "name": "Людская изба", "image": "ludizba", "icon": "mus", "dscrptn": "Людская изба представляла собой жилое помещение, дополненное кладовой и ледником для хранения продуктов.  К сожалению, оригинальная людская изба, существовавшая при жизни поэта, не сохранилась. Однако, проведенные в 1970-х годах раскопки позволили установить, что ее построили в начале XIX века, а также составить схему фундамента.В 1979 году здание было восстановлено на прежнем фундаменте, и в воссозданной людской избе открылась экспозиция «Люблю Отчизну я…», посвященная произведениям Лермонтова. " }, "geometry": { "type": "Point", "coordinates": [ 43.672919691129536, 52.992181005563197 ] } },
+{ "type": "Feature", "properties": { "name": "Дом ключника", "image": "domclutch", "icon": "mus", "dscrptn": "Дом ключника был восстановлен на старом фундаменте в 1968 году по проекту архитектора Ф.Г. Дубровина. Небольшой деревянный флигель разделен сенями на две половины. Здесь проживали семьи привилегированных крепостных, включая конторщика и ключницу, а в теплых сенях располагалась контора. В интерьере восстановлены элементы крестьянского быта, отражающие традиции и обычаи тарханских крестьян. Управляющими у Арсеньевой были крепостные Абрам Соколов, который служил в этой должности 21 год, и его сменивший Степан Рыбаков. Ключница Дарья Куртина пользовалась доверием помещицы и была хорошо известна поэту, который упомянул её в своей драме «Люди и страсти»." }, "geometry": { "type": "Point", "coordinates": [ 43.672354488540662, 52.9926736953419 ] } },
+{ "type": "Feature", "properties": { "name": "Тайная беседка", "image": "taibesed", "icon": "besed", "dscrptn": "Спустившись Темной аллеей к Большому пруду (нижнему в тарханском каскаде прудов, которых было три), можно увидеть беседку классической конструкции, упомянутую поэтом в стихотворении «Цевница». К сожалению, внешний вид этой беседки, возможно, запомнившейся М.Ю. Лермонтову, остается загадкой - до наших дней дошел лишь ее круглый кирпичный фундамент. В 1989 году беседка была воссоздана по типичным образцам архитектуры XIX века, благодаря проекту В.А. Агальцовой."}, "geometry": { "type": "Point", "coordinates": [ 43.671778856027039, 52.991539813522571 ] } },
+{ "type": "Feature", "properties": { "name": "Дуб, посаженный Лермонтовым", "image": "dub", "icon": "dub", "dscrptn": "Дуб, согласно преданию, посаженный М.Ю. Лермонтовым, стал одним из значимых мемориальных объектов музея-заповедника «Тарханы». Он рос в южной части парка, на берегу Большого пруда, и на протяжении многих лет был свидетелем жизни этого удивительного места. К сожалению, 11 июня 1995 года его сломал ураган. Сегодня ствол дерева выставлен в горизонтальном положении на прежнем месте, оставаясь символом связи с поэтом и его наследием. Этот дуб продолжает вдохновлять посетителей, напоминая о великом творце и его времени."}, "geometry": { "type": "Point", "coordinates": [ 43.672536763892218, 52.991700484030041 ] } },
+{ "type": "Feature", "properties": { "name": "Теплица", "image": "tepl", "icon": "mus", "dscrptn": "Теплица в «Тарханах» существует с конца XVIII века, с момента, когда Елизавета Алексеевна и Михаил Васильевич Арсеньевы приобрели поместье в 1794 году и основали барскую усадьбу. В настоящее время она служит не только местом для выгонки и выращивания горшечных цветов, но и важным экспонатом музея. Здесь создаётся рассада редких декоративных культур, характерных для начала XIX века. Теплица также является объектом экспозиционного показа, где можно узнать о цветочном оформлении усадеб начала XIX века, что позволяет глубже понять наследие и культуру этого исторического периода." }, "geometry": { "type": "Point", "coordinates": [ 43.67443203021832, 52.991791870037382 ] } },
+{ "type": "Feature", "properties": { "name": "Столовая", "image": "stolov", "icon": "mus", "dscrptn": "В одном из писем к бабушке в 1836 году М.Ю. Лермонтов писал: «Лошади мои вышли, башкирки так сносны, что чудо, до Петербурга скачу — а приеду, они и не вспотели, а большими парой, особенно одной, все любуются...». Эти строки подчеркивают не только любовь поэта к своим скакунам, но и его увлечение культурой конного ездства. На территории арсеньевских амбаров музея-заповедника «Тарханы» было построено оборудованное помещение для содержания лошадей. Сегодня в музее проводятся конные экскурсии по живописным окрестностям Тархан, а также катания на санях или в фаэтоне по усадьбе. Такие мероприятия дают возможность посетителям ближе познакомиться с природой и историей этого уникального места, продолжая традиции, к которым так трепетно относился Лермонтов." }, "geometry": { "type": "Point", "coordinates": [ 43.674343624189476, 52.992640667246832 ] } },
+{ "type": "Feature", "properties": { "name": "Зеленый театр", "image": "teatr", "icon": "teatr", "dscrptn": "Зелёный театр — это уютное и светлое пространство, где зрители погружаются в мир поэзии Лермонтова. Здесь, под открытым небом, звучат его стихотворения и песни, вдохновлённые его творчеством. Эта атмосфера способствует душевному отдыху и глубоким размышлениям о важном и вечном, создавая уникальную гармонию между искусством и природой. Каждый посетитель может найти здесь уголок для медитации и сопереживания, что делает это место поистине особенным." }, "geometry": { "type": "Point", "coordinates": [ 43.675593228507211, 52.992424618805586 ] } },
+{ "type": "Feature", "properties": { "name": "Загон для лошадей", "image": "cheval", "icon": "cheval", "dscrptn": null }, "geometry": { "type": "Point", "coordinates": [ 43.674932666606324, 52.99341695164614 ] } },
+{ "type": "Feature", "properties": { "name": "Огород", "image": "ogorod", "icon": "dub", "dscrptn": "Огород, расположенный недалеко от теплицы, представляет собой ухоженный участок, который служит источником свежих овощей и зелени." }, "geometry": { "type": "Point", "coordinates": [ 43.674600895666643, 52.991528638603185 ] } },
+{ "type": "Feature", "properties": { "name": "Мост через реку Марарайку", "image": "most2", "icon": "most", "dscrptn":null }, "geometry": { "type": "Point", "coordinates": [ 43.671518107908241, 52.992739503200433 ] } },
+{ "type": "Feature", "properties": { "name": "Траншеи", "image": "transh", "icon": "transh", "dscrptn": "Место детских игр Лермонтова. Траншеи находятся в дальнем углу парка на вершине холма. Они представляют собой два земляных укрепления, которые были устроены специально для военной забавы – здесь Лермонтов ребенком играл в войну со своим «потешным войском»."}, "geometry": { "type": "Point", "coordinates": [ 43.670592824583935, 52.992969458208002 ] } },
+{ "type": "Feature", "properties": { "name": "Мост через Большой пруд", "image": "most3", "icon": "most", "dscrptn": null }, "geometry": { "type": "Point", "coordinates": [ 43.671328382610398, 52.991367719764163 ] } },
+{ "type": "Feature", "properties": { "name": "Барский пруд", "image": "prudbar", "icon": "water", "dscrptn": "Барский пруд держит плотина у въезда в усадьбу. На его берегах расположены купальня и лодочная станция, которые добавляют этому месту шарма и создают атмосферу отдыха на природе. Здесь можно насладиться пейзажами, погрузиться в мир тишины и уединения вдали от городской суеты. Барский пруд гармонично сочетается с архитектурой усадьбы, подчеркивая её красоту и историческую значимость."}, "geometry": { "type": "Point", "coordinates": [ 43.674534839476571, 52.994891047677498 ] } },
+{ "type": "Feature", "properties": { "name": "Средний пруд", "image": "prudsred", "icon": "water", "dscrptn": "Средний пруд был создан в советское время и стал важной частью ландшафта этих мест. Пройдя по плотине, можно подняться на высокий холм, откуда открывается захватывающий вид. Здесь находятся «траншеи» — место, где будущий поэт участвовал в военных играх." }, "geometry": { "type": "Point", "coordinates": [ 43.671850872174097, 52.993047434312082 ] } },
+{ "type": "Feature", "properties": { "name": "Большой пруд", "image": "prudbol", "icon": "water", "dscrptn": "Большой пруд — это живописный водоём, который не только придаёт яркость окружающему пейзажу, но и является важным элементом культурного наследия. Пруд является самым значительным по площади и тянется через все село к сельской церкви. Здесь, на его заснеженной поверхности, Лермонтов наблюдал за шумными сельскими кулачными боями, что придавало этому месту особую атмосферу и запечатлело в памяти поэта яркие моменты народной жизни. Этот водоём становится символом связи между природой и культурой, отражая дух времени и события, происходившие на его берегах."}, "geometry": { "type": "Point", "coordinates": [ 43.672397201565794, 52.991384606308998 ] } },
+{ "type": "Feature", "properties": { "name": "Погреб", "image": "pogreb", "icon": "mus", "dscrptn":null }, "geometry": { "type": "Point", "coordinates": [ 43.674678871770737, 52.991780943449513 ] } },
+{ "type": "Feature", "properties": { "name": "Конюшня", "image": "kon", "icon": "cheval", "dscrptn":null }, "geometry": { "type": "Point", "coordinates": [ 43.676241373831004, 52.995482076746711 ] } },
+{ "type": "Feature", "properties": { "name": "Беседка в Дальнем саду", "image": "besed", "icon": "besed", "dscrptn":null }, "geometry": { "type": "Point", "coordinates": [ 43.679024673750163, 52.994566230020972 ] } },
+{ "type": "Feature", "properties": { "name": "Церковь Марии Египетской", "image": "church", "icon": "church", "dscrptn": "Церковь святой Марии Египетской, построенная в стиле ампир, возвышается на месте первого барского дома и является памятником любви поэта Михаила Лермонтова к своей рано ушедшей матери. Освящённая в 1820 году, она посвящена святой Марии Египетской, которая стала покровительницей Марии Михайловны Лермонтовой. В церкви сохранились рукописные книги лермонтовского времени. Посетив церковь святой Марии Египетской, вы сможете не только насладиться её архитектурной красотой и значимой историей, но и окунуться в особую атмосферу благодати и покоя, которая охватывает это место." }, "geometry": { "type": "Point", "coordinates": [ 43.671850872174105, 52.992291513099168 ] } },
+{ "type": "Feature", "properties": { "name": "Мельница", "image": "melni", "icon": "mus", "dscrptn": null }, "geometry": { "type": "Point", "coordinates": [ 43.673666672406867, 52.996882666641746 ] } }
+]
+}
 });
-map.on('mouseenter', 'points', () => {
-map.getCanvas().style.cursor = 'pointer';
+ 
+// Add a symbol layer
+map.addLayer({
+'id': 'points',
+'type': 'symbol',
+'source': 'points',
+'layout': {
+'icon-image':'custom-marker',
+'icon-size': 0.5,
+}
 });
-map.on('mouseleave', 'points', () => {
-map.getCanvas().style.cursor = '';
+}
+);
 });
 
 
-
+map.on('click', 'points', (e) => {
+// Copy coordinates array.
+const coordinates = e.features[0].geometry.coordinates.slice();
+const name = e.features[0].properties.name;
+const dscrptn = e.features[0].properties.dscrptn;
+const image = e.features[0].properties.image; 
+// Ensure that if the map is zoomed out such that multiple
+// copies of the feature are visible, the popup appears
+// over the copy being pointed to.
+while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+}
+ 
+new mapboxgl.Popup({ 
+    anchor: 'bottom',  // Anchor the popup to the bottom
+    offset: {
+        'bottom': [0, -20],  // Move the popup upwards from the bottom
+        'top': [0, 20],      // Adjust if needed for top anchor
+        'left': [20, 0],     // Move slightly to the right
+        'right': [-20, 0]    // Move slightly to the left
+    }
+  })
+    .setLngLat(coordinates)
+    .setHTML('<div class="custom-popup"><h2>' + name + '</h2><p>' + dscrptn + '</p><p><img src="photo/' + image + '.jpg" width="50%" height="50%" ></p></div>')
+    .addTo(map);
 	});
+ 
+
 	
-	map.on('style.load', () => {
+map.on('style.load', () => {
         // Insert the layer beneath any symbol layer.
         const layers = map.getStyle().layers;
         const labelLayerId = layers.find(
@@ -212,7 +222,7 @@ map.getCanvas().style.cursor = '';
         // The 'building' layer in the Mapbox Streets
         // vector tileset contains building height data
         // from OpenStreetMap.
-        map.addLayer(
+  map.addLayer(
             {
                 'id': 'add-3d-buildings',
                 'source': 'composite',
@@ -221,7 +231,7 @@ map.getCanvas().style.cursor = '';
                 'type': 'fill-extrusion',
                 'minzoom': 15,
                 'paint': {
-                    'fill-extrusion-color': '#85929e',
+                    'fill-extrusion-color': '#aaa',
 
                     // Use an 'interpolate' expression to
                     // add a smooth transition effect to
@@ -244,160 +254,133 @@ map.getCanvas().style.cursor = '';
                         15.05,
                         ['get', 'min_height']
                     ],
-                    'fill-extrusion-opacity': 0.7
+                    'fill-extrusion-opacity': 0.6
                 }
             },
             labelLayerId
         );
     });
 	
-	 const modelOrigin = [43.6729669766709, 52.99273741361519];
-    const modelAltitude = 0;
-    const modelRotate = [Math.PI / 2, 0, 0];
-
-    const modelAsMercatorCoordinate = mapboxgl.MercatorCoordinate.fromLngLat(
-        modelOrigin,
-        modelAltitude
-    );
-
-    // transformation parameters to position, rotate and scale the 3D model onto the map
-    const modelTransform = {
-        translateX: modelAsMercatorCoordinate.x,
-        translateY: modelAsMercatorCoordinate.y,
-        translateZ: modelAsMercatorCoordinate.z,
-        rotateX: modelRotate[0],
-        rotateY: modelRotate[1],
-        rotateZ: modelRotate[2],
-        /* Since the 3D model is in real world meters, a scale transform needs to be
-         * applied since the CustomLayerInterface expects units in MercatorCoordinates.
-         */
-        scale: modelAsMercatorCoordinate.meterInMercatorCoordinateUnits()
-    };
-
-    const THREE = window.THREE;
-
-    // configuration of the custom layer for a 3D model per the CustomLayerInterface
-    const customLayer = {
-        id: '3d-model',
-        type: 'custom',
-        renderingMode: '3d',
-        onAdd: function (map, gl) {
-            this.camera = new THREE.Camera();
-            this.scene = new THREE.Scene();
-
-            // create two three.js lights to illuminate the model
-            const directionalLight = new THREE.DirectionalLight(0xffffff);
-            directionalLight.position.set(0, -70, 100).normalize();
-            this.scene.add(directionalLight);
-
-            const directionalLight2 = new THREE.DirectionalLight(0xffffff);
-            directionalLight2.position.set(0, 70, 100).normalize();
-            this.scene.add(directionalLight2);
-
-            // use the three.js GLTF loader to add the 3D model to the three.js scene
-            const loader = new THREE.GLTFLoader();
-            loader.load(
-                'Lermontov.glb',
-                (gltf) => {
-                    this.scene.add(gltf.scene);
-                }
-            );
-            this.map = map;
-
-            // use the Mapbox GL JS map canvas for three.js
-            this.renderer = new THREE.WebGLRenderer({
-                canvas: map.getCanvas(),
-                context: gl,
-                antialias: true
-            });
-
-            this.renderer.autoClear = false;
-        },
-        render: function (gl, matrix) {
-            const rotationX = new THREE.Matrix4().makeRotationAxis(
-                new THREE.Vector3(1, 0, 0),
-                modelTransform.rotateX
-            );
-            const rotationY = new THREE.Matrix4().makeRotationAxis(
-                new THREE.Vector3(0, 1, 0),
-                modelTransform.rotateY
-            );
-            const rotationZ = new THREE.Matrix4().makeRotationAxis(
-                new THREE.Vector3(0, 0, 1),
-                modelTransform.rotateZ
-            );
-
-            const m = new THREE.Matrix4().fromArray(matrix);
-            const l = new THREE.Matrix4()
-                .makeTranslation(
-                    modelTransform.translateX,
-                    modelTransform.translateY,
-                    modelTransform.translateZ
-                )
-                .scale(
-                    new THREE.Vector3(
-                        modelTransform.scale,
-                        -modelTransform.scale,
-                        modelTransform.scale
-                    )
-                )
-                .multiply(rotationX)
-                .multiply(rotationY)
-                .multiply(rotationZ);
-
-            this.camera.projectionMatrix = m.multiply(l);
-            this.renderer.resetState();
-            this.renderer.render(this.scene, this.camera);
-            this.map.triggerRepaint();
+	
+     const tb = (window.tb = new Threebox(
+        map,
+        map.getCanvas().getContext('webgl'),
+        {
+            defaultLights: true
         }
-    };
+    ));
 
     map.on('style.load', () => {
-        map.addLayer(customLayer, 'waterway-label');
+        map.addLayer({
+            id: 'custom-threebox-model',
+            type: 'custom',
+            renderingMode: '3d',
+            onAdd: function () {
+                // Creative Commons License attribution:  Metlife Building model by https://sketchfab.com/NanoRay
+                // https://sketchfab.com/3d-models/metlife-building-32d3a4a1810a4d64abb9547bb661f7f3
+                const scale = 3.3;
+                const options = {
+                    obj: 'Lermontov.glb',
+                    type: 'glb',
+                    scale: { x: scale, y: scale, z: 2.7 },
+                    units: 'meters',
+                    rotation: { x: 90, y: 10, z: 0 }
+                };
+
+                tb.loadObj(options, (model) => {
+                    model.setCoords([43.673330039457575,52.992991752382174]);
+                    model.setRotation({ x: 0, y: 0, z: 200 });
+                    tb.add(model);
+                });
+            },
+
+            render: function () {
+                tb.update();
+            }
+        });
     });
-</script>
-<script>
+	map.on('style.load', () => {
+        map.addLayer({
+            id: 'custom-threebox-model-1',
+            type: 'custom',
+            renderingMode: '3d',
+            onAdd: function () {
+                // Creative Commons License attribution:  Metlife Building model by https://sketchfab.com/NanoRay
+                // https://sketchfab.com/3d-models/metlife-building-32d3a4a1810a4d64abb9547bb661f7f3
+                const scale = 2.3;
+                const options = {
+                    obj: 'Clu.glb',
+                    type: 'glb',
+                    scale: { x: scale, y: scale, z: 1.5 },
+                    units: 'meters',
+                    rotation: { x: 90, y: 10, z: 0 }
+                };
 
-	mybutton.onclick = function() {
+                tb.loadObj(options, (model) => {
+                    model.setCoords([43.6721649629392,52.99241456756731]);
+                    model.setRotation({ x: 0, y: 0, z: 30 });
+                    tb.add(model);
+                });
+            },
+
+            render: function () {
+                tb.update();
+            }
+        });
+    });
+
+	map.on('style.load', () => {
+        // Insert the layer beneath any symbol layer.
+        const layers = map.getStyle().layers;
+        const labelLayerId = layers.find(
+            (layer) => layer.type === 'symbol' && layer.layout['text-field']
+        ).id;
+
+        // The 'building' layer in the Mapbox Streets
+        // vector tileset contains building height data
+        // from OpenStreetMap.
+  map.addLayer(
+            {
+                'id': 'add-3d-buildings',
+                'source': 'composite',
+                'source-layer': 'building',
+                'filter': ['==', 'extrude', 'true'],
+                'type': 'fill-extrusion',
+                'minzoom': 15,
+                'paint': {
+                    'fill-extrusion-color': '#aaa',
+
+                    // Use an 'interpolate' expression to
+                    // add a smooth transition effect to
+                    // the buildings as the user zooms in.
+                    'fill-extrusion-height': [
+                        'interpolate',
+                        ['linear'],
+                        ['zoom'],
+                        15,
+                        0,
+                        15.05,
+                        ['get', 'height']
+                    ],
+                    'fill-extrusion-base': [
+                        'interpolate',
+                        ['linear'],
+                        ['zoom'],
+                        15,
+                        0,
+                        15.05,
+                        ['get', 'min_height']
+                    ],
+                    'fill-extrusion-opacity': 0.6
+                }
+            },
+            labelLayerId
+        );
+    });
 	
-	if (mytext.value!='') {
-$.ajax({
-	url: 'https://geocode-maps.yandex.ru/1.x',         /* Куда пойдет запрос */
-	method: 'get',             /* Метод передачи (post или get) */
-	dataType: 'json',    /* Тип данных в ответе (xml, json, script, html). */
-	data: {geocode:mytext.value, apikey:'9c80c2d6-056a-466a-a272-b2d31729cb61', format: 'json'},
-	success: function(data){   /* функция которая будет выполнена после успешного запроса.  */
-		console.log(data);
-		
-		if (data.response.GeoObjectCollection.featureMember.length>0) {
-let coord = data.response.GeoObjectCollection.featureMember[0].GeoObject.Point.pos.split (' ');
-let x = Number (coord [0]);// долгота
-let y = Number (coord [1]); // широта
-
-
-let x1 = Number(data.response.GeoObjectCollection.featureMember[0].GeoObject.boundedBy.Envelope.lowerCorner.split(' ')[0]);
-let y1 = Number(data.response.GeoObjectCollection.featureMember[0].GeoObject.boundedBy.Envelope.lowerCorner.split(' ')[1]);
-let x2 = Number(data.response.GeoObjectCollection.featureMember[0].GeoObject.boundedBy.Envelope.upperCorner.split(' ')[0]);
-let y2 = Number(data.response.GeoObjectCollection.featureMember[0].GeoObject.boundedBy.Envelope.upperCorner.split(' ')[1]);
-
-
-
-	map.fitBounds([[x1,y1],[x2,y2]]);
-
-
-		
-		 
-		 }
-		 else {
-		 alert('Объект не найден!');}
-	}
-});
-} else {
-alert('Введите название города или страны');
-}
-}
-
+	
+    
 </script>
-
+ 
 </body>
 </html>
