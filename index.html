@@ -1,0 +1,213 @@
+
+<html>
+<head>
+<title>Туризм Астраханской области"</title>
+	<style>
+.mapboxgl-popup {
+max-width: 400px;
+font: 12px/20px Great Vibes, serif;
+}
+</style>
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<meta charset="utf-8">
+<meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+<link href="https://api.mapbox.com/mapbox-gl-js/v3.7.0/mapbox-gl.css" rel="stylesheet">
+<script src="https://api.mapbox.com/mapbox-gl-js/v3.7.0/mapbox-gl.js"></script>
+
+<script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+ <link rel="icon" type="image/x-icon" href="https://upload.wikimedia.org/wikipedia/commons/e/e5/Folding_Map_Flat_Icon_Vector_v2.svg">
+ 
+
+ <style>
+body { margin: 0; padding: 0; }
+#map { position: absolute; top: 0; bottom: 0; width: 100%; }
+.menu {
+	position: absolute;
+	width: 31%;
+	margin: 10px;
+	padding: 10px;
+	background-color: white; 
+	z-index: 100;
+	text-align: right;
+	border-radius: 4px;
+	box-shadow: 0 0 10px 2px rgba(1,0,0,.2);
+	font-family: Helvetica, sans-serif;
+	color: #145a32;
+	position: relative; /* Add relative positioning */
+}
+	 
+	 #button_1 {
+}
+
+.mapboxgl-popup {
+  max-width: 1200px; /* Maximum width for larger screens */
+  width: 100%; /* Full width of the parent container */
+}
+
+.mapboxgl-popup-content {
+  width: 100%; /* Ensure the content takes full width */
+  max-width: 600px; /* Limit maximum width */
+  min-width: 400px; /* Set a minimum width so it doesn’t get too narrow */
+  box-sizing: border-box; /* Include padding and borders in width */
+  padding: 15px; /* Add padding for content readability */
+  background-color: white; /* Set background */
+  border: 1px solid #ccc; /* Optional: add border */
+  border-radius: 5px; /* Optional: rounded corners */
+  overflow-y: auto;
+font-family: Palatino, serif; /  /* Allow scrolling if the content overflows */
+}
+
+.mapboxgl-popup-close-button {
+  top: 10px; /* Adjust the close button position */
+  right: 10px;
+}
+.mapboxgl-popup-content p {
+  text-align: justify; /* Center align the text and inline elements inside <p> */
+}
+
+.mapboxgl-popup-content img {
+  display: block; /* Make the image a block element */
+  margin: 0 auto; /* Center the image horizontally */
+  max-width: 100%; /* Ensure the image stays responsive */
+  height: auto; /* Maintain image aspect ratio */
+}
+
+
+</style>
+</head>
+<body>
+<script src="https://cdn.jsdelivr.net/gh/jscastro76/threebox@v.2.2.2/dist/threebox.min.js" type="text/javascript"></script>
+<link href="https://cdn.jsdelivr.net/gh/jscastro76/threebox@v.2.2.2/dist/threebox.css" rel="stylesheet">
+
+
+<div class="menu">
+	<p><h2 style="text-align: center;">Музей-заповедник «Тарханы»</h2> — это уголок в глубине России, имеющий притягательную силу «культурного гнезда». Здесь, в имении своей бабушки Е.А. Арсеньевой, провел половину жизни великий русский поэт Михаил Юрьевич Лермонтов. Тарханы навсегда остались для него страной, где душа «чудесного искала». </p>
+
+</div>
+
+
+<link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.css" type="text/css">
+<div id="map"></div>
+
+<script>
+mapboxgl.accessToken = 'pk.eyJ1IjoiZWthdGVyaW5hLXpodXJhdmxldmEiLCJhIjoiY2w5YTM4azI4MGpmNDN2bzZxNmF4aXB6NiJ9.eKCP_ow0zyYyT3-uKgeLnw';
+const map = new mapboxgl.Map({
+container: 'map',
+style: 'mapbox://styles/ekaterina-zhuravleva/cm1zftgak01dj01qv02l9chhn',
+center: [48.030178, 46.347614],
+zoom: 11,
+antialias: true
+});
+
+
+
+map.addControl(new mapboxgl.NavigationControl());
+
+
+const geolocate = new mapboxgl.GeolocateControl({
+    positionOptions: {
+        enableHighAccuracy: true
+    },
+    trackUserLocation: true
+});
+
+// Add the control to the map.
+map.addControl(geolocate);
+// Set an event listener that fires
+// when a geolocate event occurs.
+geolocate.on('geolocate', () => {
+    console.log('A geolocate event has occurred.');
+});
+map.addControl(new mapboxgl.FullscreenControl());
+
+map.on('load', () => {
+
+map.loadImage(
+'icon.png',
+(error, image) => {
+if (error) throw error;
+map.addImage('custom-marker', image);
+
+
+map.addSource('points', {
+'type': 'geojson',
+'data': {
+'type': 'FeatureCollection',
+'features': [
+{ "type": "Feature", "properties": { "full_id": "n4250076731", "class": 1 }, "geometry": { "type": "Point", "coordinates": [ 48.0453595, 46.3492868 ] } },
+{ "type": "Feature", "properties": { "full_id": "n11007749682", "class": 1 }, "geometry": { "type": "Point", "coordinates": [ 48.0430386, 46.3488735 ] } },
+{ "type": "Feature", "properties": { "full_id": "n6576741959", "class": 2 }, "geometry": { "type": "Point", "coordinates": [ 48.0521907, 46.3693133 ] } },
+{ "type": "Feature", "properties": { "full_id": "n10693409106", "class": 2 }, "geometry": { "type": "Point", "coordinates": [ 48.0555292, 46.3692971 ] } },
+{ "type": "Feature", "properties": { "full_id": "n11668762688", "class": 2 }, "geometry": { "type": "Point", "coordinates": [ 48.0928177, 46.3509415 ] } },
+{ "type": "Feature", "properties": { "full_id": "n1382550367", "class": 3 }, "geometry": { "type": "Point", "coordinates": [ 48.0380843, 46.3542164 ] } },
+{ "type": "Feature", "properties": { "full_id": "n1671726596", "class": 3 }, "geometry": { "type": "Point", "coordinates": [ 48.0635126, 46.3605859 ] } },
+{ "type": "Feature", "properties": { "full_id": "n2479728949", "class": 3 }, "geometry": { "type": "Point", "coordinates": [ 48.0336683, 46.3414873 ] } },
+{ "type": "Feature", "properties": { "full_id": "n2479728950", "class": 3 }, "geometry": { "type": "Point", "coordinates": [ 48.033643, 46.3416232 ] } },
+{ "type": "Feature", "properties": { "full_id": "n3495910177", "class": 3 }, "geometry": { "type": "Point", "coordinates": [ 48.0540092, 46.359792 ] } },
+{ "type": "Feature", "properties": { "full_id": "n3495912272", "class": 3 }, "geometry": { "type": "Point", "coordinates": [ 48.0497998, 46.358538 ] } },
+{ "type": "Feature", "properties": { "full_id": "n3549514830", "class": 3 }, "geometry": { "type": "Point", "coordinates": [ 48.0582332, 46.3561416 ] } },
+{ "type": "Feature", "properties": { "full_id": "n3575166094", "class": 3 }, "geometry": { "type": "Point", "coordinates": [ 48.0323786, 46.3291896 ] } },
+{ "type": "Feature", "properties": { "full_id": "n3575166095", "class": 3 }, "geometry": { "type": "Point", "coordinates": [ 48.0324767, 46.3325057 ] } },
+{ "type": "Feature", "properties": { "full_id": "n4040411600", "class": 3 }, "geometry": { "type": "Point", "coordinates": [ 48.0332496, 46.3471154 ] } },
+{ "type": "Feature", "properties": { "full_id": "n4584402989", "class": 3 }, "geometry": { "type": "Point", "coordinates": [ 47.9851199, 46.3617746 ] } },
+{ "type": "Feature", "properties": { "full_id": "n5763815362", "class": 3 }, "geometry": { "type": "Point", "coordinates": [ 48.0327405, 46.3458506 ] } },
+{ "type": "Feature", "properties": { "full_id": "n7896360045", "class": 3 }, "geometry": { "type": "Point", "coordinates": [ 48.0205431, 46.3488019 ] } },
+{ "type": "Feature", "properties": { "full_id": "n10246402351", "class": 3 }, "geometry": { "type": "Point", "coordinates": [ 48.017785, 46.34662 ] } },
+{ "type": "Feature", "properties": { "full_id": "n11007749646", "class": 3 }, "geometry": { "type": "Point", "coordinates": [ 48.076648, 46.378828 ] } },
+{ "type": "Feature", "properties": { "full_id": "n11007749740", "class": 3 }, "geometry": { "type": "Point", "coordinates": [ 48.0247646, 46.3366878 ] } },
+{ "type": "Feature", "properties": { "full_id": "n11435128936", "class": 3 }, "geometry": { "type": "Point", "coordinates": [ 48.0740422, 46.3542554 ] } },
+{ "type": "Feature", "properties": { "full_id": "n11880539869", "class": 3 }, "geometry": { "type": "Point", "coordinates": [ 48.0428005, 46.3538066 ] } },
+{ "type": "Feature", "properties": { "full_id": "n12088015069", "class": 3 }, "geometry": { "type": "Point", "coordinates": [ 48.0477386, 46.3763627 ] } },
+{ "type": "Feature", "properties": { "full_id": "n12177874834", "class": 3 }, "geometry": { "type": "Point", "coordinates": [ 48.0499263, 46.3329224 ] } },
+{ "type": "Feature", "properties": { "full_id": "n12177874835", "class": 3 }, "geometry": { "type": "Point", "coordinates": [ 48.0496984, 46.3329158 ] } },
+{ "type": "Feature", "properties": { "full_id": "n12177874836", "class": 3 }, "geometry": { "type": "Point", "coordinates": [ 48.0494489, 46.3331547 ] } }
+]
+}
+});
+ 
+// Add a symbol layer
+map.addLayer({
+'id': 'points',
+'type': 'symbol',
+'source': 'points',
+'layout': {
+'icon-image': 'custom-marker',
+'text-field': ['get', 'name'],
+'text-font': [
+'Open Sans Semibold',
+'Arial Unicode MS Bold'
+],
+'text-offset': [0, 1.25],
+'text-anchor': 'left'
+}
+});
+}
+);
+});
+
+map.on('click', 'points', (e) => {
+// Copy coordinates array.
+const coordinates = e.features[0].geometry.coordinates.slice();
+const name = e.features[0].properties.name;
+const dscrptn = e.features[0].properties.dscrptn;
+const image = e.features[0].properties.image; 
+// Ensure that if the map is zoomed out such that multiple
+// copies of the feature are visible, the popup appears
+// over the copy being pointed to.
+while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+}
+ 
+new mapboxgl.Popup()
+.setLngLat(coordinates)
+.setHTML('<h2>'+name+'</h2><p>'+dscrptn+'</p><p><img src="goroda-geroi/'+image+'.jpg" width="100%"></p>')
+.addTo(map);
+});
+
+
+
+</script>
+ 
+</body>
+</html>
