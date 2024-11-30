@@ -1,0 +1,29 @@
+{
+"type": "FeatureCollection",
+"name": "guesthouse",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "addr:street": null, "name:ru": "рыболовная база Нижнее Займище" }, "geometry": { "type": "Point", "coordinates": [ 45.8106066, 48.3123039 ] } },
+{ "type": "Feature", "properties": { "addr:street": null, "name:ru": "домики на Волге" }, "geometry": { "type": "Point", "coordinates": [ 45.7386977, 48.3829574 ] } },
+{ "type": "Feature", "properties": { "addr:street": null, "name:ru": null }, "geometry": { "type": "Point", "coordinates": [ 48.6350664, 46.3666265 ] } },
+{ "type": "Feature", "properties": { "addr:street": null, "name:ru": null }, "geometry": { "type": "Point", "coordinates": [ 48.1281821, 45.8752446 ] } },
+{ "type": "Feature", "properties": { "addr:street": null, "name:ru": null }, "geometry": { "type": "Point", "coordinates": [ 46.5635684, 47.8829861 ] } },
+{ "type": "Feature", "properties": { "addr:street": null, "name:ru": null }, "geometry": { "type": "Point", "coordinates": [ 48.0521907, 46.3693133 ] } },
+{ "type": "Feature", "properties": { "addr:street": null, "name:ru": null }, "geometry": { "type": "Point", "coordinates": [ 48.9083082, 46.0812192 ] } },
+{ "type": "Feature", "properties": { "addr:street": null, "name:ru": null }, "geometry": { "type": "Point", "coordinates": [ 47.3475944, 47.2099111 ] } },
+{ "type": "Feature", "properties": { "addr:street": null, "name:ru": null }, "geometry": { "type": "Point", "coordinates": [ 47.3901237, 47.192794 ] } },
+{ "type": "Feature", "properties": { "addr:street": null, "name:ru": null }, "geometry": { "type": "Point", "coordinates": [ 48.1151849, 45.9936099 ] } },
+{ "type": "Feature", "properties": { "addr:street": null, "name:ru": null }, "geometry": { "type": "Point", "coordinates": [ 48.5998654, 46.0179702 ] } },
+{ "type": "Feature", "properties": { "addr:street": "Садовая улица", "name:ru": null }, "geometry": { "type": "Point", "coordinates": [ 48.6002202, 46.180997 ] } },
+{ "type": "Feature", "properties": { "addr:street": null, "name:ru": null }, "geometry": { "type": "Point", "coordinates": [ 47.1811438, 47.378587 ] } },
+{ "type": "Feature", "properties": { "addr:street": "улица Чкалова", "name:ru": null }, "geometry": { "type": "Point", "coordinates": [ 48.126709, 45.8482323 ] } },
+{ "type": "Feature", "properties": { "addr:street": "Новолесная улица", "name:ru": null }, "geometry": { "type": "Point", "coordinates": [ 47.9841957, 46.0542526 ] } },
+{ "type": "Feature", "properties": { "addr:street": null, "name:ru": null }, "geometry": { "type": "Point", "coordinates": [ 48.0555292, 46.3692971 ] } },
+{ "type": "Feature", "properties": { "addr:street": null, "name:ru": null }, "geometry": { "type": "Point", "coordinates": [ 47.6525187, 45.7755485 ] } },
+{ "type": "Feature", "properties": { "addr:street": null, "name:ru": null }, "geometry": { "type": "Point", "coordinates": [ 47.9692671, 46.3125307 ] } },
+{ "type": "Feature", "properties": { "addr:street": null, "name:ru": null }, "geometry": { "type": "Point", "coordinates": [ 47.5235231, 46.9903635 ] } },
+{ "type": "Feature", "properties": { "addr:street": null, "name:ru": null }, "geometry": { "type": "Point", "coordinates": [ 47.6410657, 45.6056387 ] } },
+{ "type": "Feature", "properties": { "addr:street": null, "name:ru": null }, "geometry": { "type": "Point", "coordinates": [ 48.0928177, 46.3509415 ] } },
+{ "type": "Feature", "properties": { "addr:street": null, "name:ru": null }, "geometry": { "type": "Point", "coordinates": [ 48.1256801, 46.3302616 ] } }
+]
+}

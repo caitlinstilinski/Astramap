@@ -1,0 +1,17 @@
+{
+"type": "FeatureCollection",
+"name": "viewpoint",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "full_id": "n4210894152", "osm_id": "4210894152", "osm_type": "node", "tourism": "viewpoint", "name": null }, "geometry": { "type": "Point", "coordinates": [ 46.8555645, 48.1425999 ] } },
+{ "type": "Feature", "properties": { "full_id": "n4210894173", "osm_id": "4210894173", "osm_type": "node", "tourism": "viewpoint", "name": null }, "geometry": { "type": "Point", "coordinates": [ 46.8582742, 48.1432621 ] } },
+{ "type": "Feature", "properties": { "full_id": "n4307982709", "osm_id": "4307982709", "osm_type": "node", "tourism": "viewpoint", "name": null }, "geometry": { "type": "Point", "coordinates": [ 46.8560447, 48.145433 ] } },
+{ "type": "Feature", "properties": { "full_id": "n4307982711", "osm_id": "4307982711", "osm_type": "node", "tourism": "viewpoint", "name": null }, "geometry": { "type": "Point", "coordinates": [ 46.856555, 48.1458129 ] } },
+{ "type": "Feature", "properties": { "full_id": "n4307982717", "osm_id": "4307982717", "osm_type": "node", "tourism": "viewpoint", "name": null }, "geometry": { "type": "Point", "coordinates": [ 46.8567722, 48.1464563 ] } },
+{ "type": "Feature", "properties": { "full_id": "n8718485287", "osm_id": "8718485287", "osm_type": "node", "tourism": "viewpoint", "name": "Старинные столбы для сбора соли" }, "geometry": { "type": "Point", "coordinates": [ 46.8296721, 48.2041076 ] } },
+{ "type": "Feature", "properties": { "full_id": "n9824345317", "osm_id": "9824345317", "osm_type": "node", "tourism": "viewpoint", "name": "Соленое озеро" }, "geometry": { "type": "Point", "coordinates": [ 47.9367395, 46.4110645 ] } },
+{ "type": "Feature", "properties": { "full_id": "n9843862817", "osm_id": "9843862817", "osm_type": "node", "tourism": "viewpoint", "name": "Пляж" }, "geometry": { "type": "Point", "coordinates": [ 46.7300193, 47.5611389 ] } },
+{ "type": "Feature", "properties": { "full_id": "n10086525917", "osm_id": "10086525917", "osm_type": "node", "tourism": "viewpoint", "name": null }, "geometry": { "type": "Point", "coordinates": [ 46.1169182, 48.0714448 ] } },
+{ "type": "Feature", "properties": { "full_id": "n11159743037", "osm_id": "11159743037", "osm_type": "node", "tourism": "viewpoint", "name": null }, "geometry": { "type": "Point", "coordinates": [ 48.0246917, 46.3559726 ] } }
+]
+}

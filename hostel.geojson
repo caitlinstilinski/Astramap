@@ -1,0 +1,13 @@
+{
+"type": "FeatureCollection",
+"name": "hotel",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "phone": null, "name": "Старая Волга" }, "geometry": { "type": "Point", "coordinates": [ 47.8669211, 46.0609665 ] } },
+{ "type": "Feature", "properties": { "phone": null, "name": "база отдыха Парус" }, "geometry": { "type": "Point", "coordinates": [ 47.930118, 46.1017175 ] } },
+{ "type": "Feature", "properties": { "phone": "+7-988-171-7919", "name": "Gabzov" }, "geometry": { "type": "Point", "coordinates": [ 48.0453595, 46.3492868 ] } },
+{ "type": "Feature", "properties": { "phone": null, "name": "Кодьяк’off" }, "geometry": { "type": "Point", "coordinates": [ 47.7292509, 46.0868046 ] } },
+{ "type": "Feature", "properties": { "phone": null, "name": "Денис квартира" }, "geometry": { "type": "Point", "coordinates": [ 46.1739963, 48.2788466 ] } },
+{ "type": "Feature", "properties": { "phone": null, "name": "Dom30" }, "geometry": { "type": "Point", "coordinates": [ 48.0430386, 46.3488735 ] } }
+]
+}
